@@ -1,0 +1,7 @@
+services:
+  - docker
+
+script:
+  - docker build -t atroo/redis-sentinel-exporter:latest .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+  - docker push atroo/redis-sentinel-exporter:latest
